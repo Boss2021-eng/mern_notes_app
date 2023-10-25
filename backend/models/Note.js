@@ -6,7 +6,7 @@ const noteSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: User,
+      ref: 'User',
     },
 
     title: {
@@ -35,4 +35,4 @@ noteSchema.plugin(AutoIncrement, {
   start_seq: 500,
 });
 
-modules.exports = mongoose.models('Note', noteSchema);
+module.exports = mongoose.model('Note', noteSchema);

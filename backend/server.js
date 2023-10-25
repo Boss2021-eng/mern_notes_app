@@ -17,7 +17,8 @@ console.log(process.env.NODE_ENV);
 connectDB();
 app.use(logger);
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 //to render static pages
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 
 //to handle routes
 app.use('/', require('./routes/root'));
+app.use('/users', require('./routes/userRoutes'));
 
 app.all('*', (req, res) => {
   res.status(404);
